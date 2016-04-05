@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Doodle:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Doodle_jar</output-path>
+    <root id="archive" name="Doodle.jar">
+      <element id="module-output" name="Doodle" />
+    </root>
+  </artifact>
+</component>
