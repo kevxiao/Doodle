@@ -125,10 +125,6 @@ public class DrawArea extends Observer {
         });
     }
 
-    public void setCanvasSize(Dimension size) {
-        this.canvasSize = size;
-    }
-
     public Dimension getCanvasSize() {
         return new Dimension(this.canvasSize);
     }
@@ -182,7 +178,7 @@ public class DrawArea extends Observer {
 
     private void paintLine(Graphics2D g2d, Line line) {
         if(this.doodleModel.isActualSize()) {
-            g2d.setStroke(new BasicStroke((float) (line.getThickness() * Doodle.ratioDPI)));
+            g2d.setStroke(new BasicStroke((float) (line.getThickness() * Doodle.ratioDPI), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
             g2d.setColor(line.getColor());
             g2d.drawLine((int) (line.getSrc().x * Doodle.ratioDPI), (int) (line.getSrc().y * Doodle.ratioDPI), (int) (line.getDest().x * Doodle.ratioDPI), (int) (line.getDest().y * Doodle.ratioDPI));
         } else {
@@ -192,10 +188,14 @@ public class DrawArea extends Observer {
             } else {
                 ratio = this.getSize().getWidth() / this.getCanvasSize().getWidth();
             }
-            g2d.setStroke(new BasicStroke((float) (line.getThickness() * Doodle.ratioDPI * ratio)));
+            g2d.setStroke(new BasicStroke((float) (line.getThickness() * Doodle.ratioDPI * ratio), BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
             g2d.setColor(line.getColor());
             g2d.drawLine((int) (line.getSrc().x * Doodle.ratioDPI * ratio), (int) (line.getSrc().y * Doodle.ratioDPI * ratio), (int) (line.getDest().x * Doodle.ratioDPI * ratio), (int) (line.getDest().y * Doodle.ratioDPI * ratio));
         }
+    }
+
+    private void setCanvasSize(Dimension size) {
+        this.canvasSize = size;
     }
 
     // PROTECTED
